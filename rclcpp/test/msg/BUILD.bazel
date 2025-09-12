@@ -33,10 +33,10 @@ ros_interface(
 )
 
 ros_interface(
-    name = "LargeMessage",
+    name = "LargeMessageWithHeader",
     src = "LargeMessageWithHeader.msg",
     deps = [
-        "@builtin_interfaces//msg:Header",
+        "@std_msgs//msg:Header",
     ],
 )
 
