@@ -24,42 +24,25 @@ cc_ros_library(
     deps = [
         "@lifecycle_msgs//msg:State",
         "@lifecycle_msgs//msg:Transition",
+        "@lifecycle_msgs//msg:TransitionDescription",
         "@lifecycle_msgs//msg:TransitionEvent",
+        "@lifecycle_msgs//srv:ChangeState",
+        "@lifecycle_msgs//srv:GetAvailableStates",
+        "@lifecycle_msgs//srv:GetAvailableTransitions",
+        "@lifecycle_msgs//srv:GetState",
     ],
 )
 
 cc_library(
     name = "rclcpp_lifecycle",
-    hdrs = glob(["include/**/*.hpp"]),
+    hdrs = glob(["include/**/*.h", "include/**/*.hpp"]),
     srcs = glob(["src/**/*.hpp", "src/**/*.cpp"]),
     includes = ["include"],
     local_defines = ["ROS_PACKAGE_NAME=\\\"rclcpp_lifecycle\\\""],
     deps = [
         "@rcl_lifecycle",
         "@rclcpp",
-        "@rcpputils",
         ":msgs",
-        # "@builtin_interfaces",
-        # "@fastcdr",
-        # "@libstatistics_collector",
-        # "@lifecycle_msgs",
-        # "@llttng-ust",
-        # "@rcl",
-        # "@rcl_interfaces",
-        # "@rcl_lifecycle",
-        # "@rcl_logging_interface",
-        # "@rcl_yaml_param_parser",
-        # "@rclcpp",
-        # "@rcutils",
-        # "@rmw",
-        # "@rmw_implementation",
-        # "@rosgraph_msgs",
-        # "@rosidl_runtime_c",
-        # "@rosidl_runtime_cpp",
-        # "@service_msgs",
-        # "@statistics_msgs",
-        # "@tracetools",
-        # "@type_description_interfaces",
     ],
 )
 
@@ -68,13 +51,10 @@ cc_library(
 cc_ros_library(
     name = "test_msgs",
     deps = [
-        "@lifecycle_msgs//srv:ChangeState",
-        "@lifecycle_msgs//srv:GetAvailableStates",
-        "@lifecycle_msgs//srv:GetAvailableTransitions",
-        "@lifecycle_msgs//srv:GetState",
         "@rcl_interfaces//srv:GetLoggerLevels",
         "@rcl_interfaces//srv:ListParameters",
         "@rcl_interfaces//srv:SetLoggerLevels",
+        "@test_msgs//msg:Empty",
         "@test_msgs//srv:Empty",
     ],
 )
@@ -82,15 +62,16 @@ cc_ros_library(
 [
     cc_test(
         name = test,
-        srcs = ["test/{}.cpp".format(test)],
+        srcs = ["test/{}.cpp".format(test)] + ["test/mocking_utils/patch.hpp"],
         local_defines = ["ROS_PACKAGE_NAME=\\\"rclcpp_lifecycle\\\""],
         deps = [
             "@googletest//:gtest_main",
             "@googletest//:gtest",
-            "@osrf_testing_tools_cpp//:memory_tools",
+            "@mimick",
             ":test_msgs",
             ":rclcpp_lifecycle",
         ],
+        tags = ["requires-network", "exclusive"]
     )
     for test in [
         "test_callback_exceptions",

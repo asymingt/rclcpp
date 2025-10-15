@@ -401,7 +401,7 @@ public:
 #define SubscriptionIntraProcessBase mock::SubscriptionIntraProcessBase
 #define SubscriptionIntraProcessBuffer mock::SubscriptionIntraProcessBuffer
 #define SubscriptionIntraProcess mock::SubscriptionIntraProcess
-#include "../src/rclcpp/intra_process_manager.cpp"  // NOLINT
+#include "src/rclcpp/intra_process_manager.cpp"  // NOLINT
 #undef Publisher
 #undef PublisherBase
 #undef IntraProcessBuffer

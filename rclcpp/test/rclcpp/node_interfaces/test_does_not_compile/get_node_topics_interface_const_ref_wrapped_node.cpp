@@ -17,7 +17,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp/node_interfaces/get_node_topics_interface.hpp"
 
-#include "../node_wrapper.hpp"
+#include "test/rclcpp/node_interfaces/node_wrapper.hpp"
 
 int main(void)
 {

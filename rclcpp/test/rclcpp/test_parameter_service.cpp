@@ -21,7 +21,7 @@
 #include <vector>
 
 #include "rclcpp/rclcpp.hpp"
-#include "../../src/rclcpp/parameter_service_names.hpp"
+#include "src/rclcpp/parameter_service_names.hpp"
 
 using namespace std::chrono_literals;
 
