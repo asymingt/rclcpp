@@ -89,7 +89,8 @@ TEST_F(TestNodeWaitables, add_remove_waitable)
   EXPECT_NO_THROW(node_waitables->remove_waitable(waitable2, nullptr));
 }
 
-TEST_F(TestNodeWaitables, add_waitable_rcl_trigger_guard_condition_error)
+// TODO(asymingt) enable once mocking works in Bazel.
+TEST_F(TestNodeWaitables, DISABLED_add_waitable_rcl_trigger_guard_condition_error)
 {
   auto callback_group = node->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
   auto waitable = std::make_shared<TestWaitable>();

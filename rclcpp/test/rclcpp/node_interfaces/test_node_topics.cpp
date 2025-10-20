@@ -139,7 +139,8 @@ TEST_F(TestNodeTopics, add_publisher)
     std::runtime_error);
 }
 
-TEST_F(TestNodeTopics, add_publisher_rcl_trigger_guard_condition_error)
+// TODO(asymingt) enable once mocking works in Bazel.
+TEST_F(TestNodeTopics, DISABLED_add_publisher_rcl_trigger_guard_condition_error)
 {
   auto publisher = std::make_shared<TestPublisher>(node.get());
   auto callback_group = node->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
@@ -167,7 +168,8 @@ TEST_F(TestNodeTopics, add_subscription)
     std::runtime_error);
 }
 
-TEST_F(TestNodeTopics, add_subscription_rcl_trigger_guard_condition_error)
+// TODO(asymingt) enable once mocking works in Bazel.
+TEST_F(TestNodeTopics, DISABLED_add_subscription_rcl_trigger_guard_condition_error)
 {
   auto subscription = std::make_shared<TestSubscription>(node.get());
   auto callback_group = node->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);

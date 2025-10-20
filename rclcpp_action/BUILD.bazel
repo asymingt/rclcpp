@@ -59,24 +59,6 @@ cc_ros_library(
 [
     cc_test(
         name = name,
-        srcs = ["test/benchmark/{}.cpp".format(name)],
-        deps = [
-            "@google_benchmark//:benchmark_main",
-            "@performance_test_fixture",
-            ":rclcpp_action",
-            ":test_msgs",
-        ],
-        timeout = "short",
-    )
-    for name in [
-        "benchmark_action_client",
-        "benchmark_action_server"
-    ]
-]
-
-[
-    cc_test(
-        name = name,
         srcs = ["test/{}.cpp".format(name)] + ["test/mocking_utils/patch.hpp"],
         deps = [
             "@googletest//:gtest",
@@ -86,12 +68,33 @@ cc_ros_library(
             ":test_msgs",
         ],
         local_defines = ["ROS_PACKAGE_NAME=\\\"rclcpp_action\\\""],
-    ) for name in [
+        timeout = "moderate",
+    )
+    for name in [
         "test_client",
         "test_generic_client",
         "test_server_goal_handle",
         "test_server",
         "test_traits",
         "test_types",
+    ]
+]
+
+[
+    cc_test(
+        name = name,
+        srcs = ["test/benchmark/{}.cpp".format(name)],
+        deps = [
+            "@google_benchmark//:benchmark_main",
+            "@performance_test_fixture",
+            ":rclcpp_action",
+            ":test_msgs",
+        ],
+        local_defines = ["ROS_PACKAGE_NAME=\\\"rclcpp_action\\\""],
+        timeout = "moderate",
+    )
+    for name in [
+        "benchmark_action_client",
+        "benchmark_action_server"
     ]
 ]
