@@ -91,8 +91,7 @@ TEST_F(TestServerGoalHandle, construct_destruct) {
   EXPECT_FALSE(handle_->is_executing());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestServerGoalHandle, DISABLED_cancel) {
+TEST_F(TestServerGoalHandle, cancel) {
   handle_->execute();
   EXPECT_TRUE(handle_->try_cancel());
   EXPECT_FALSE(handle_->is_canceling());
@@ -119,8 +118,7 @@ TEST_F(TestServerGoalHandle, DISABLED_cancel) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestServerGoalHandle, DISABLED_abort) {
+TEST_F(TestServerGoalHandle, abort) {
   handle_->execute();
   test_msgs::action::Fibonacci::Result::SharedPtr result =
     std::make_shared<test_msgs::action::Fibonacci::Result>();
@@ -134,8 +132,7 @@ TEST_F(TestServerGoalHandle, DISABLED_abort) {
   EXPECT_THROW(handle_->abort(result), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestServerGoalHandle, DISABLED_succeed) {
+TEST_F(TestServerGoalHandle, succeed) {
   handle_->execute();
   test_msgs::action::Fibonacci::Result::SharedPtr result =
     std::make_shared<test_msgs::action::Fibonacci::Result>();
@@ -149,8 +146,7 @@ TEST_F(TestServerGoalHandle, DISABLED_succeed) {
   EXPECT_THROW(handle_->succeed(result), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestServerGoalHandle, DISABLED_execute) {
+TEST_F(TestServerGoalHandle, execute) {
   handle_->execute();
   EXPECT_FALSE(handle_->is_canceling());
   EXPECT_TRUE(handle_->is_active());
@@ -161,8 +157,7 @@ TEST_F(TestServerGoalHandle, DISABLED_execute) {
   EXPECT_THROW(handle_->execute(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestServerGoalHandle, DISABLED_rcl_action_goal_handle_get_status_error) {
+TEST_F(TestServerGoalHandle, rcl_action_goal_handle_get_status_error) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_goal_handle_get_status, RCL_RET_ERROR);
 

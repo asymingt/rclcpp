@@ -37,8 +37,7 @@ protected:
 /*
  * Testing normal construction and destruction.
  */
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGuardCondition, DISABLED_construction_and_destruction) {
+TEST_F(TestGuardCondition, construction_and_destruction) {
   {
     auto gc = std::make_shared<rclcpp::GuardCondition>();
     (void)gc;
@@ -85,8 +84,7 @@ TEST_F(TestGuardCondition, get_rcl_guard_condition) {
 /*
  * Testing tigger method.
  */
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGuardCondition, DISABLED_trigger) {
+TEST_F(TestGuardCondition, trigger) {
   {
     auto gc = std::make_shared<rclcpp::GuardCondition>();
     EXPECT_NO_THROW(gc->trigger());
@@ -103,8 +101,7 @@ TEST_F(TestGuardCondition, DISABLED_trigger) {
 /*
  * Testing addition to a wait set
  */
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGuardCondition, DISABLED_add_to_wait_set) {
+TEST_F(TestGuardCondition, add_to_wait_set) {
   {
     {
       auto gc = std::make_shared<rclcpp::GuardCondition>();

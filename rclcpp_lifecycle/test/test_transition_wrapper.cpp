@@ -119,8 +119,7 @@ TEST_F(TestTransitionWrapper, assignment_operator) {
   EXPECT_EQ(2, b->goal_state().id());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestTransitionWrapper, DISABLED_exceptions) {
+TEST_F(TestTransitionWrapper, exceptions) {
   rcl_lifecycle_transition_t * null_handle = nullptr;
   EXPECT_THROW((void)rclcpp_lifecycle::Transition(null_handle), std::runtime_error);
 

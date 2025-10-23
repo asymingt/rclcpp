@@ -77,8 +77,7 @@ MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcl_guard_condition_options_t, <)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcl_guard_condition_options_t, >)
 
 /* Error creating a new graph listener */
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_error_construct_graph_listener) {
+TEST_F(TestGraphListener, error_construct_graph_listener) {
   using rclcpp::contexts::get_global_default_context;
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_guard_condition_init, RCL_RET_ERROR);
@@ -98,8 +97,7 @@ MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, <)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, >)
 
 /* Errors that occur when initializing the graph_listener */
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_error_start_graph_listener) {
+TEST_F(TestGraphListener, error_start_graph_listener) {
   {
     auto mock = mocking_utils::patch_and_return(
       "lib:rclcpp", rcl_wait_set_init, RCL_RET_ERROR);
@@ -150,8 +148,7 @@ TEST_F(TestGraphListener, error_run_graph_listener_destroy_context) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_error_run_graph_listener_mock_wait_set_clear) {
+TEST_F(TestGraphListener, error_run_graph_listener_mock_wait_set_clear) {
   auto global_context = rclcpp::contexts::get_global_default_context();
   auto graph_listener_test =
     std::make_shared<TestGraphListenerProtectedMethods>(global_context);
@@ -163,8 +160,7 @@ TEST_F(TestGraphListener, DISABLED_error_run_graph_listener_mock_wait_set_clear)
     std::runtime_error("failed to clear wait set: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_error_run_graph_listener_mock_wait_set_add_guard_condition) {
+TEST_F(TestGraphListener, error_run_graph_listener_mock_wait_set_add_guard_condition) {
   auto global_context = rclcpp::contexts::get_global_default_context();
   auto graph_listener_test =
     std::make_shared<TestGraphListenerProtectedMethods>(global_context);
@@ -176,8 +172,7 @@ TEST_F(TestGraphListener, DISABLED_error_run_graph_listener_mock_wait_set_add_gu
     std::runtime_error("failed to add guard condition to wait set: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_error_run_graph_listener_mock_wait_error) {
+TEST_F(TestGraphListener, error_run_graph_listener_mock_wait_error) {
   auto global_context = rclcpp::contexts::get_global_default_context();
   auto graph_listener_test =
     std::make_shared<TestGraphListenerProtectedMethods>(global_context);
@@ -189,8 +184,7 @@ TEST_F(TestGraphListener, DISABLED_error_run_graph_listener_mock_wait_error) {
     std::runtime_error("failed to wait on wait set: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_error_run_graph_listener_mock_wait_timeout) {
+TEST_F(TestGraphListener, error_run_graph_listener_mock_wait_timeout) {
   auto global_context = rclcpp::contexts::get_global_default_context();
   auto graph_listener_test =
     std::make_shared<TestGraphListenerProtectedMethods>(global_context);
@@ -252,8 +246,7 @@ TEST_F(TestGraphListener, test_errors_graph_listener_add_remove_node) {
 }
 
 /* Shutdown errors */
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_test_graph_listener_shutdown_wait_fini_error_nothrow) {
+TEST_F(TestGraphListener, test_graph_listener_shutdown_wait_fini_error_nothrow) {
   auto global_context = rclcpp::contexts::get_global_default_context();
   auto graph_listener_test =
     std::make_shared<TestGraphListenerProtectedMethods>(global_context);
@@ -270,8 +263,7 @@ TEST_F(TestGraphListener, DISABLED_test_graph_listener_shutdown_wait_fini_error_
   graph_listener_test->mock_cleanup_wait_set();
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_test_graph_listener_shutdown_wait_fini_error_throw) {
+TEST_F(TestGraphListener, test_graph_listener_shutdown_wait_fini_error_throw) {
   auto global_context = rclcpp::contexts::get_global_default_context();
   auto graph_listener_test =
     std::make_shared<TestGraphListenerProtectedMethods>(global_context);
@@ -290,8 +282,7 @@ TEST_F(TestGraphListener, DISABLED_test_graph_listener_shutdown_wait_fini_error_
   graph_listener_test->mock_cleanup_wait_set();
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGraphListener, DISABLED_test_graph_listener_shutdown_guard_fini_error_throw) {
+TEST_F(TestGraphListener, test_graph_listener_shutdown_guard_fini_error_throw) {
   auto global_context = rclcpp::contexts::get_global_default_context();
   auto graph_listener_test =
     std::make_shared<TestGraphListenerProtectedMethods>(global_context);

@@ -3779,8 +3779,7 @@ TEST_F(TestNode, wait_for_graph_event) {
   EXPECT_GT(timeout, thread_completion - thread_start);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNode, DISABLED_create_sub_node_rmw_validate_namespace_error) {
+TEST_F(TestNode, create_sub_node_rmw_validate_namespace_error) {
   auto node = std::make_shared<rclcpp::Node>("node", "ns");
   {
     auto mock = mocking_utils::patch_and_return(

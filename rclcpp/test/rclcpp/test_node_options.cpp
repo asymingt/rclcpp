@@ -262,8 +262,7 @@ TEST(TestNodeOptions, append_parameter_override) {
   EXPECT_EQ(std::string("some_parameter"), options.parameter_overrides()[0].get_name());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestNodeOptions, DISABLED_rcl_node_options_fini_error) {
+TEST(TestNodeOptions, rcl_node_options_fini_error) {
   auto mock = mocking_utils::inject_on_return("lib:rclcpp", rcl_node_options_fini, RCL_RET_ERROR);
   auto options = std::make_shared<rclcpp::NodeOptions>();
   // Necessary to setup internal pointer

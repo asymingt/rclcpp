@@ -130,8 +130,7 @@ TEST_F(TestServiceSub, construction_and_destruction) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestService, DISABLED_construction_and_destruction_rcl_errors) {
+TEST_F(TestService, construction_and_destruction_rcl_errors) {
   auto callback = [](
     const test_msgs::srv::Empty::Request::SharedPtr, test_msgs::srv::Empty::Response::SharedPtr) {};
 
@@ -189,8 +188,7 @@ TEST_F(TestService, basic_public_getters) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestService, DISABLED_take_request) {
+TEST_F(TestService, take_request) {
   auto callback = [](
     const test_msgs::srv::Empty::Request::SharedPtr, test_msgs::srv::Empty::Response::SharedPtr) {};
   auto server = node->create_service<test_msgs::srv::Empty>("service", callback);
@@ -217,8 +215,7 @@ TEST_F(TestService, DISABLED_take_request) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestService, DISABLED_send_response) {
+TEST_F(TestService, send_response) {
   auto callback = [](
     const test_msgs::srv::Empty::Request::SharedPtr, test_msgs::srv::Empty::Response::SharedPtr) {};
   auto server = node->create_service<test_msgs::srv::Empty>("service", callback);
@@ -313,8 +310,7 @@ TEST_F(TestService, on_new_request_callback) {
   EXPECT_THROW(server->set_on_new_request_callback(invalid_cb), std::invalid_argument);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestService, DISABLED_rcl_service_response_publisher_get_actual_qos_error) {
+TEST_F(TestService, rcl_service_response_publisher_get_actual_qos_error) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_service_response_publisher_get_actual_qos, nullptr);
   auto callback = [](
@@ -325,8 +321,7 @@ TEST_F(TestService, DISABLED_rcl_service_response_publisher_get_actual_qos_error
     std::runtime_error("failed to get service's response publisher qos settings: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestService, DISABLED_rcl_service_request_subscription_get_actual_qos_error) {
+TEST_F(TestService, rcl_service_request_subscription_get_actual_qos_error) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_service_request_subscription_get_actual_qos, nullptr);
   auto callback = [](

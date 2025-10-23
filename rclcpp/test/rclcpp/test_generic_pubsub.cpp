@@ -144,7 +144,7 @@ private:
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(RclcppGenericNodeFixture, DISABLED_publisher_and_subscriber_work)
+TEST_F(RclcppGenericNodeFixture, publisher_and_subscriber_work)
 {
   // We currently publish more messages because they can get lost
   std::vector<std::string> test_messages = {"Hello World", "Hello World"};
@@ -183,7 +183,7 @@ TEST_F(RclcppGenericNodeFixture, DISABLED_publisher_and_subscriber_work)
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(RclcppGenericNodeFixture, DISABLED_publish_loaned_msg_work)
+TEST_F(RclcppGenericNodeFixture, publish_loaned_msg_work)
 {
   // We currently publish more messages because they can get lost
   std::vector<int64_t> test_messages = {100, 100};
@@ -230,7 +230,7 @@ TEST_F(RclcppGenericNodeFixture, DISABLED_publish_loaned_msg_work)
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(RclcppGenericNodeFixture, DISABLED_generic_subscription_uses_qos)
+TEST_F(RclcppGenericNodeFixture, generic_subscription_uses_qos)
 {
   // If the GenericSubscription does not use the provided QoS profile,
   // its request will be incompatible with the Publisher's offer and no messages will be passed.
@@ -252,7 +252,7 @@ TEST_F(RclcppGenericNodeFixture, DISABLED_generic_subscription_uses_qos)
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(RclcppGenericNodeFixture, DISABLED_generic_publisher_uses_qos)
+TEST_F(RclcppGenericNodeFixture, generic_publisher_uses_qos)
 {
   // If the GenericPublisher does not use the provided QoS profile,
   // its offer will be incompatible with the Subscription's request and no messages will be passed.
@@ -274,7 +274,7 @@ TEST_F(RclcppGenericNodeFixture, DISABLED_generic_publisher_uses_qos)
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(RclcppGenericNodeFixture, DISABLED_generic_subscription_different_callbacks)
+TEST_F(RclcppGenericNodeFixture, generic_subscription_different_callbacks)
 {
   using namespace std::chrono_literals;
   std::string topic_name = "string_topic";

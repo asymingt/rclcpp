@@ -94,7 +94,7 @@ protected:
  */
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_construction_and_destruction) {
+TEST_F(TestGenericClient, construction_and_destruction) {
   {
     auto client = node->create_generic_client("test_service", "test_msgs/srv/Empty");
   }
@@ -116,7 +116,7 @@ TEST_F(TestGenericClient, DISABLED_construction_and_destruction) {
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_construction_with_free_function) {
+TEST_F(TestGenericClient, construction_with_free_function) {
   {
     auto client = rclcpp::create_generic_client(
       node->get_node_base_interface(),
@@ -187,7 +187,7 @@ TEST_F(TestGenericClient, DISABLED_construction_with_free_function) {
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_construct_with_rcl_error) {
+TEST_F(TestGenericClient, construct_with_rcl_error) {
   {
     // reset() is not necessary for this exception, but handles unused return value warning
     auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_client_init, RCL_RET_ERROR);
@@ -205,7 +205,7 @@ TEST_F(TestGenericClient, DISABLED_construct_with_rcl_error) {
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_wait_for_service) {
+TEST_F(TestGenericClient, wait_for_service) {
   const std::string service_name = "test_service";
 
   auto client = node->create_generic_client(service_name, "test_msgs/srv/Empty");
@@ -228,7 +228,7 @@ TEST_F(TestGenericClient, DISABLED_wait_for_service) {
  */
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientSub, DISABLED_construction_and_destruction) {
+TEST_F(TestGenericClientSub, construction_and_destruction) {
   {
     auto client = subnode->create_generic_client("test_service", "test_msgs/srv/Empty");
     EXPECT_STREQ(client->get_service_name(), "/ns/sub_ns/test_service");
@@ -244,7 +244,7 @@ TEST_F(TestGenericClientSub, DISABLED_construction_and_destruction) {
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientSub, DISABLED_async_send_request_with_request) {
+TEST_F(TestGenericClientSub, async_send_request_with_request) {
   const std::string service_name = "test_service";
   int64_t expected_change = 1111;
 
@@ -277,7 +277,7 @@ TEST_F(TestGenericClientSub, DISABLED_async_send_request_with_request) {
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientSub, DISABLED_async_send_request_with_request_and_callback) {
+TEST_F(TestGenericClientSub, async_send_request_with_request_and_callback) {
   const std::string service_name = "test_service";
   int64_t expected_change = 2222;
 

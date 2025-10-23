@@ -95,8 +95,7 @@ TEST_F(TestNodeService, add_service)
     rclcpp::exceptions::MissingGroupNodeException("service"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeService, DISABLED_add_service_rcl_trigger_guard_condition_error)
+TEST_F(TestNodeService, add_service_rcl_trigger_guard_condition_error)
 {
   auto service = std::make_shared<TestService>(node.get());
   auto callback_group = node->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
@@ -123,8 +122,7 @@ TEST_F(TestNodeService, add_client)
     rclcpp::exceptions::MissingGroupNodeException("client"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeService, DISABLED_add_client_rcl_trigger_guard_condition_error)
+TEST_F(TestNodeService, add_client_rcl_trigger_guard_condition_error)
 {
   auto client = std::make_shared<TestClient>(node.get());
   auto callback_group = node->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);

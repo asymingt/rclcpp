@@ -448,8 +448,7 @@ protected:
   }
 };
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestLifecycleServiceClientRCLErrors, DISABLED_call_services_rcl_errors) {
+TEST_F(TestLifecycleServiceClientRCLErrors, call_services_rcl_errors) {
   auto lifecycle_node = std::make_shared<EmptyLifecycleNode>();
   auto lifecycle_client = std::make_shared<LifecycleServiceClient>("client_with_errors");
 

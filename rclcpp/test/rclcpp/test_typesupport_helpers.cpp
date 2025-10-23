@@ -48,7 +48,7 @@ TEST(TypesupportHelpersTest, throws_exception_if_library_cannot_be_found) {
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST(TypesupportHelpersTest, DISABLED_returns_c_type_info_for_valid_legacy_library) {
+TEST(TypesupportHelpersTest, returns_c_type_info_for_valid_legacy_library) {
   try {
     auto library = rclcpp::get_typesupport_library(
       "test_msgs/BasicTypes", "rosidl_typesupport_cpp");
@@ -65,7 +65,7 @@ TEST(TypesupportHelpersTest, DISABLED_returns_c_type_info_for_valid_legacy_libra
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST(TypesupportHelpersTest, DISABLED_returns_c_type_info_for_valid_library) {
+TEST(TypesupportHelpersTest, returns_c_type_info_for_valid_library) {
   try {
     auto library = rclcpp::get_typesupport_library(
       "test_msgs/msg/BasicTypes", "rosidl_typesupport_cpp");
@@ -82,7 +82,7 @@ TEST(TypesupportHelpersTest, DISABLED_returns_c_type_info_for_valid_library) {
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST(TypesupportHelpersTest, DISABLED_returns_service_type_info_for_valid_legacy_library) {
+TEST(TypesupportHelpersTest, returns_service_type_info_for_valid_legacy_library) {
   try {
     auto library = rclcpp::get_typesupport_library(
       "test_msgs/Empty", "rosidl_typesupport_cpp");
@@ -99,7 +99,7 @@ TEST(TypesupportHelpersTest, DISABLED_returns_service_type_info_for_valid_legacy
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST(TypesupportHelpersTest, DISABLED_returns_service_type_info_for_valid_library) {
+TEST(TypesupportHelpersTest, returns_service_type_info_for_valid_library) {
   try {
     auto library = rclcpp::get_typesupport_library(
       "test_msgs/srv/Empty", "rosidl_typesupport_cpp");
@@ -116,7 +116,7 @@ TEST(TypesupportHelpersTest, DISABLED_returns_service_type_info_for_valid_librar
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST(TypesupportHelpersTest, DISABLED_returns_action_type_info_for_valid_legacy_library) {
+TEST(TypesupportHelpersTest, returns_action_type_info_for_valid_legacy_library) {
   try {
     auto library = rclcpp::get_typesupport_library(
       "test_msgs/NestedMessage", "rosidl_typesupport_cpp");
@@ -133,7 +133,7 @@ TEST(TypesupportHelpersTest, DISABLED_returns_action_type_info_for_valid_legacy_
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST(TypesupportHelpersTest, DISABLED_returns_action_type_info_for_valid_library) {
+TEST(TypesupportHelpersTest, returns_action_type_info_for_valid_library) {
   try {
     auto library = rclcpp::get_typesupport_library(
       "test_msgs/action/NestedMessage", "rosidl_typesupport_cpp");
@@ -150,7 +150,7 @@ TEST(TypesupportHelpersTest, DISABLED_returns_action_type_info_for_valid_library
 
 // TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
 // See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST(TypesupportHelpersTest, DISABLED_test_throw_exception_with_invalid_type) {
+TEST(TypesupportHelpersTest, test_throw_exception_with_invalid_type) {
   // message
   std::string invalid_type = "test_msgs/msg/InvalidType";
   auto library = rclcpp::get_typesupport_library(invalid_type, "rosidl_typesupport_cpp");

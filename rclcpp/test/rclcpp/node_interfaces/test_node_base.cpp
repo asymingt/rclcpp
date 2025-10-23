@@ -70,8 +70,7 @@ TEST_F(TestNodeBase, construct_from_node)
   EXPECT_NE(nullptr, const_node_base->get_shared_rcl_node_handle());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_guard_condition_init_error) {
+TEST_F(TestNodeBase, construct_destruct_rcl_guard_condition_init_error) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_guard_condition_init, RCL_RET_ERROR);
   EXPECT_THROW(
@@ -79,8 +78,7 @@ TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_guard_condition_init_error)
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_error) {
+TEST_F(TestNodeBase, construct_destruct_rcl_node_init_error) {
   auto mock_node_init = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_node_init, RCL_RET_ERROR);
 
@@ -94,8 +92,7 @@ TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_error) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_node_name) {
+TEST_F(TestNodeBase, construct_destruct_rcl_node_init_rcl_invalid_node_name) {
   auto mock_node_init = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_node_init, RCL_RET_NODE_INVALID_NAME);
 
@@ -108,8 +105,7 @@ TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_node_
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_node_name_invalid_argument) {
+TEST_F(TestNodeBase, construct_destruct_rcl_node_init_rcl_invalid_node_name_invalid_argument) {
   auto mock_node_init = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_node_init, RCL_RET_NODE_INVALID_NAME);
 
@@ -122,8 +118,7 @@ TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_node_
     rclcpp::exceptions::RCLInvalidArgument);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_node_name_valid_rmw_node_name) {
+TEST_F(TestNodeBase, construct_destruct_rcl_node_init_rcl_invalid_node_name_valid_rmw_node_name) {
   auto mock_node_init = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_node_init, RCL_RET_NODE_INVALID_NAME);
 
@@ -140,8 +135,7 @@ TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_node_
     std::runtime_error("valid rmw node name but invalid rcl node name"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_namespace) {
+TEST_F(TestNodeBase, construct_destruct_rcl_node_init_rcl_invalid_namespace) {
   auto mock_node_init = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_node_init, RCL_RET_NODE_INVALID_NAMESPACE);
 
@@ -154,8 +148,7 @@ TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_names
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_namespace_rmw_invalid_argument) {
+TEST_F(TestNodeBase, construct_destruct_rcl_node_init_rcl_invalid_namespace_rmw_invalid_argument) {
   auto mock_node_init = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_node_init, RCL_RET_NODE_INVALID_NAMESPACE);
 
@@ -168,8 +161,7 @@ TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_names
     rclcpp::exceptions::RCLInvalidArgument);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_namespace_valid_rmw_namespace) {
+TEST_F(TestNodeBase, construct_destruct_rcl_node_init_rcl_invalid_namespace_valid_rmw_namespace) {
   auto mock_node_init = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_node_init, RCL_RET_NODE_INVALID_NAMESPACE);
 
@@ -186,16 +178,14 @@ TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_rcl_invalid_names
     std::runtime_error("valid rmw node namespace but invalid rcl node namespace"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_node_init_fini_error) {
+TEST_F(TestNodeBase, construct_destruct_rcl_node_init_fini_error) {
   auto mock_node_fini = mocking_utils::inject_on_return(
     "lib:rclcpp", rcl_node_fini, RCL_RET_ERROR);
 
   EXPECT_NO_THROW(std::make_shared<rclcpp::Node>("node", "ns").reset());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeBase, DISABLED_construct_destruct_rcl_guard_condition_fini_error) {
+TEST_F(TestNodeBase, construct_destruct_rcl_guard_condition_fini_error) {
   auto mock_node_fini = mocking_utils::inject_on_return(
     "lib:rclcpp", rcl_guard_condition_fini, RCL_RET_ERROR);
 

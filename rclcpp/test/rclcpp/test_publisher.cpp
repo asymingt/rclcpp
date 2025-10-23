@@ -317,8 +317,7 @@ TEST_F(TestPublisher, basic_getters) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_serialized_message_publish) {
+TEST_F(TestPublisher, serialized_message_publish) {
   initialize();
   rclcpp::PublisherOptionsWithAllocator<std::allocator<void>> options;
   // This is the default, but it's also important for this test to succeed.
@@ -334,8 +333,7 @@ TEST_F(TestPublisher, DISABLED_serialized_message_publish) {
   EXPECT_NO_THROW(publisher->publish(serialized_msg.get_rcl_serialized_message()));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_rcl_publisher_init_error) {
+TEST_F(TestPublisher, rcl_publisher_init_error) {
   initialize();
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_publisher_init, RCL_RET_ERROR);
   EXPECT_THROW(
@@ -343,8 +341,7 @@ TEST_F(TestPublisher, DISABLED_rcl_publisher_init_error) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_rcl_publisher_get_rmw_handle_error) {
+TEST_F(TestPublisher, rcl_publisher_get_rmw_handle_error) {
   initialize();
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_publisher_get_rmw_handle, nullptr);
   RCLCPP_EXPECT_THROW_EQ(
@@ -352,8 +349,7 @@ TEST_F(TestPublisher, DISABLED_rcl_publisher_get_rmw_handle_error) {
     std::runtime_error("failed to get rmw handle: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_rcl_publisher_get_gid_for_publisher_error) {
+TEST_F(TestPublisher, rcl_publisher_get_gid_for_publisher_error) {
   initialize();
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rmw_get_gid_for_publisher, RMW_RET_ERROR);
@@ -362,8 +358,7 @@ TEST_F(TestPublisher, DISABLED_rcl_publisher_get_gid_for_publisher_error) {
     std::runtime_error("failed to get publisher gid: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_rcl_publisher_fini_error) {
+TEST_F(TestPublisher, rcl_publisher_fini_error) {
   initialize();
   auto mock = mocking_utils::inject_on_return("lib:rclcpp", rcl_publisher_fini, RCL_RET_ERROR);
   auto publisher = node->create_publisher<test_msgs::msg::Empty>("topic", 10);
@@ -372,8 +367,7 @@ TEST_F(TestPublisher, DISABLED_rcl_publisher_fini_error) {
   EXPECT_NO_THROW(publisher.reset());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_rcl_publisher_get_options_error) {
+TEST_F(TestPublisher, rcl_publisher_get_options_error) {
   initialize();
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_publisher_get_options, nullptr);
   auto publisher = node->create_publisher<test_msgs::msg::Empty>("topic", 10);
@@ -382,8 +376,7 @@ TEST_F(TestPublisher, DISABLED_rcl_publisher_get_options_error) {
     std::runtime_error("failed to get publisher options: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_rcl_publisher_get_subscription_count_publisher_invalid) {
+TEST_F(TestPublisher, rcl_publisher_get_subscription_count_publisher_invalid) {
   initialize();
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_publisher_get_subscription_count, RCL_RET_PUBLISHER_INVALID);
@@ -393,8 +386,7 @@ TEST_F(TestPublisher, DISABLED_rcl_publisher_get_subscription_count_publisher_in
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_rcl_publisher_get_actual_qos_error) {
+TEST_F(TestPublisher, rcl_publisher_get_actual_qos_error) {
   initialize();
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_publisher_get_actual_qos, nullptr);
@@ -404,8 +396,7 @@ TEST_F(TestPublisher, DISABLED_rcl_publisher_get_actual_qos_error) {
     std::runtime_error("failed to get qos settings: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_publishers_equal_rmw_compare_gids_error) {
+TEST_F(TestPublisher, publishers_equal_rmw_compare_gids_error) {
   initialize();
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rmw_compare_gids_equal, RMW_RET_ERROR);
@@ -463,8 +454,7 @@ TEST_F(TestPublisher, intra_process_publish_failures) {
     node->create_publisher<test_msgs::msg::Empty>("topic", rclcpp::QoS(0), options));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_inter_process_publish_failures) {
+TEST_F(TestPublisher, inter_process_publish_failures) {
   initialize();
   rclcpp::PublisherOptionsWithAllocator<std::allocator<void>> options;
   options.use_intra_process_comm = rclcpp::IntraProcessSetting::Disable;
@@ -521,7 +511,7 @@ public:
   }
 };
 
-TEST_F(TestPublisher, DISABLED_do_loaned_message_publish_error) {
+TEST_F(TestPublisher, do_loaned_message_publish_error) {
   initialize();
   using PublisherT = TestPublisherProtectedMethods<test_msgs::msg::Empty, std::allocator<void>>;
   // This test only passes when message is allocated on heap, not middleware.
@@ -565,8 +555,7 @@ TEST_F(TestPublisher, run_event_handlers) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_get_network_flow_endpoints_errors) {
+TEST_F(TestPublisher, get_network_flow_endpoints_errors) {
   initialize();
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);
@@ -596,8 +585,7 @@ TEST_F(TestPublisher, DISABLED_get_network_flow_endpoints_errors) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestPublisher, DISABLED_check_wait_for_all_acked_return) {
+TEST_F(TestPublisher, check_wait_for_all_acked_return) {
   initialize();
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);

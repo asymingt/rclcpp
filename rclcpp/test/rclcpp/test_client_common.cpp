@@ -257,8 +257,7 @@ TYPED_TEST(TestAllClientTypesWithServer, prune_requests_older_than_with_pruned)
   EXPECT_EQ(future.request_id, pruned_requests[0]);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TYPED_TEST(TestAllClientTypesWithServer, DISABLED_async_send_request_rcl_send_request_error)
+TYPED_TEST(TestAllClientTypesWithServer, async_send_request_rcl_send_request_error)
 {
   using ClientType = TypeParam;
 
@@ -268,8 +267,7 @@ TYPED_TEST(TestAllClientTypesWithServer, DISABLED_async_send_request_rcl_send_re
   EXPECT_THROW(this->template SendEmptyRequestAndWait<ClientType>(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TYPED_TEST(TestAllClientTypesWithServer, DISABLED_async_send_request_rcl_service_server_is_available_error)
+TYPED_TEST(TestAllClientTypesWithServer, async_send_request_rcl_service_server_is_available_error)
 {
   using ClientType = TypeParam;
 
@@ -296,8 +294,7 @@ TYPED_TEST(TestAllClientTypesWithServer, DISABLED_async_send_request_rcl_service
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TYPED_TEST(TestAllClientTypesWithServer, DISABLED_take_response)
+TYPED_TEST(TestAllClientTypesWithServer, take_response)
 {
   using ClientType = TypeParam;
 
@@ -454,8 +451,7 @@ TYPED_TEST(TestAllClientTypesWithServer, client_qos)
   EXPECT_EQ(qos_profile, rs_qos);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TYPED_TEST(TestAllClientTypesWithServer, DISABLED_rcl_client_request_publisher_get_actual_qos_error)
+TYPED_TEST(TestAllClientTypesWithServer, rcl_client_request_publisher_get_actual_qos_error)
 {
   using ClientType = TypeParam;
 
@@ -467,8 +463,7 @@ TYPED_TEST(TestAllClientTypesWithServer, DISABLED_rcl_client_request_publisher_g
     std::runtime_error("failed to get client's request publisher qos settings: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TYPED_TEST(TestAllClientTypesWithServer, DISABLED_rcl_client_response_subscription_get_actual_qos_error)
+TYPED_TEST(TestAllClientTypesWithServer, rcl_client_response_subscription_get_actual_qos_error)
 {
   using ClientType = TypeParam;
 

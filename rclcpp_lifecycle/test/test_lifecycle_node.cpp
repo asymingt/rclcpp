@@ -423,8 +423,7 @@ TEST_F(TestDefaultStateMachine, trigger_transition_shutdown_label) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestDefaultStateMachine, DISABLED_trigger_transition_rcl_errors) {
+TEST_F(TestDefaultStateMachine, trigger_transition_rcl_errors) {
   auto test_node = std::make_shared<EmptyLifecycleNode>("testnode");
 
   {

@@ -20,8 +20,7 @@
 #include "../../mocking_utils/patch.hpp"
 #include "../../utils/rclcpp_gtest_macros.hpp"
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExceptions, DISABLED_throw_from_rcl_error) {
+TEST(TestExceptions, throw_from_rcl_error) {
   EXPECT_THROW(
     rclcpp::exceptions::throw_from_rcl_error(RCL_RET_BAD_ALLOC, ""),
     rclcpp::exceptions::RCLBadAlloc);

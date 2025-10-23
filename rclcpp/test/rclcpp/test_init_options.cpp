@@ -85,8 +85,7 @@ MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, !=)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, <)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, >)
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestInitOptions, DISABLED_constructor_rcl_init_options_init_failed) {
+TEST(TestInitOptions, constructor_rcl_init_options_init_failed) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_init_options_init, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -94,8 +93,7 @@ TEST(TestInitOptions, DISABLED_constructor_rcl_init_options_init_failed) {
     std::runtime_error("failed to initialize rcl init options: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestInitOptions, DISABLED_constructor_rcl_init_options_copy_failed) {
+TEST(TestInitOptions, constructor_rcl_init_options_copy_failed) {
   rcl_init_options_t rcl_opts;
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_init_options_copy, RCL_RET_ERROR);
@@ -104,8 +102,7 @@ TEST(TestInitOptions, DISABLED_constructor_rcl_init_options_copy_failed) {
     std::runtime_error("failed to copy rcl init options: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestInitOptions, DISABLED_copy_constructor_rcl_init_options_copy_failed) {
+TEST(TestInitOptions, copy_constructor_rcl_init_options_copy_failed) {
   rclcpp::InitOptions options;
   rclcpp::InitOptions options2;
   auto mock = mocking_utils::patch_and_return(
@@ -115,8 +112,7 @@ TEST(TestInitOptions, DISABLED_copy_constructor_rcl_init_options_copy_failed) {
     std::runtime_error("failed to copy rcl init options: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestInitOptions, DISABLED_use_default_domain_id_rcl_get_default_domain_id_failed) {
+TEST(TestInitOptions, use_default_domain_id_rcl_get_default_domain_id_failed) {
   rclcpp::InitOptions options;
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_get_default_domain_id, RCL_RET_ERROR);
@@ -125,8 +121,7 @@ TEST(TestInitOptions, DISABLED_use_default_domain_id_rcl_get_default_domain_id_f
     std::runtime_error("failed to get default domain id: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestInitOptions, DISABLED_set_domain_id_rcl_init_options_set_domain_id_failed) {
+TEST(TestInitOptions, set_domain_id_rcl_init_options_set_domain_id_failed) {
   rclcpp::InitOptions options;
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_init_options_set_domain_id, RCL_RET_ERROR);
@@ -135,8 +130,7 @@ TEST(TestInitOptions, DISABLED_set_domain_id_rcl_init_options_set_domain_id_fail
     std::runtime_error("failed to set domain id to rcl init options: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestInitOptions, DISABLED_get_domain_id_rcl_init_options_get_domain_id_failed) {
+TEST(TestInitOptions, get_domain_id_rcl_init_options_get_domain_id_failed) {
   rclcpp::InitOptions options;
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_init_options_get_domain_id, RCL_RET_ERROR);

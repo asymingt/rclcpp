@@ -78,8 +78,7 @@ TEST_F(TestNodeTimers, add_timer)
     rclcpp::exceptions::MissingGroupNodeException("timer"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeTimers, DISABLED_add_timer_rcl_trigger_guard_condition_error)
+TEST_F(TestNodeTimers, add_timer_rcl_trigger_guard_condition_error)
 {
   auto timer = std::make_shared<TestTimer>(node.get());
   auto callback_group = node->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);

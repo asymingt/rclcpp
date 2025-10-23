@@ -82,16 +82,14 @@ private:
   bool add_to_wait_set_;
 };
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_fini_error) {
+TEST_F(TestStoragePolicyCommon, rcl_wait_set_fini_error) {
   auto wait_set = std::make_shared<rclcpp::WaitSet>();
   auto mock = mocking_utils::inject_on_return(
     "lib:rclcpp", rcl_wait_set_fini, RCL_RET_ERROR);
   EXPECT_NO_THROW(wait_set.reset());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_resize_error) {
+TEST_F(TestStoragePolicyCommon, rcl_wait_set_resize_error) {
   rclcpp::WaitSet wait_set;
 
   auto subscription = node->create_subscription<test_msgs::msg::Empty>(
@@ -106,8 +104,7 @@ TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_resize_error) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_clear_error) {
+TEST_F(TestStoragePolicyCommon, rcl_wait_set_clear_error) {
   rclcpp::WaitSet wait_set;
 
   auto mock = mocking_utils::patch_and_return(
@@ -117,8 +114,7 @@ TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_clear_error) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_subscription_error) {
+TEST_F(TestStoragePolicyCommon, rcl_wait_set_add_subscription_error) {
   rclcpp::WaitSet wait_set;
   auto subscription = node->create_subscription<test_msgs::msg::Empty>(
     "topic", 10, [](test_msgs::msg::Empty::ConstSharedPtr) {});
@@ -132,8 +128,7 @@ TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_subscription_error) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_guard_condition_error) {
+TEST_F(TestStoragePolicyCommon, rcl_wait_set_add_guard_condition_error) {
   rclcpp::WaitSet wait_set;
   auto guard_condition = std::make_shared<rclcpp::GuardCondition>();
   auto mock = mocking_utils::patch_and_return(
@@ -144,8 +139,7 @@ TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_guard_condition_error)
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_timer_error) {
+TEST_F(TestStoragePolicyCommon, rcl_wait_set_add_timer_error) {
   rclcpp::WaitSet wait_set;
   auto timer = node->create_wall_timer(std::chrono::seconds(100), []() {});
   auto mock = mocking_utils::patch_and_return(
@@ -156,8 +150,7 @@ TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_timer_error) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_service_error) {
+TEST_F(TestStoragePolicyCommon, rcl_wait_set_add_service_error) {
   rclcpp::WaitSet wait_set;
   auto service =
     node->create_service<test_msgs::srv::Empty>(
@@ -173,8 +166,7 @@ TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_service_error) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestStoragePolicyCommon, DISABLED_rcl_wait_set_add_client_error) {
+TEST_F(TestStoragePolicyCommon, rcl_wait_set_add_client_error) {
   rclcpp::WaitSet wait_set;
   auto client = node->create_client<test_msgs::srv::Empty>("service");
   auto mock = mocking_utils::patch_and_return(

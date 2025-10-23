@@ -68,8 +68,7 @@ protected:
   std::filesystem::path test_resources_path;
 };
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeParameters, DISABLED_construct_destruct_rcl_errors) {
+TEST_F(TestNodeParameters, construct_destruct_rcl_errors) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_arguments_get_param_overrides, RCL_RET_ERROR);
   EXPECT_THROW(

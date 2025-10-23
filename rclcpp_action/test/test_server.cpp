@@ -161,8 +161,7 @@ TEST_F(TestServer, construction_and_destruction_callback_group)
       group));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestServer, DISABLED_construction_and_destruction_server_init_error)
+TEST_F(TestServer, construction_and_destruction_server_init_error)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_server_init2, RCL_RET_ERROR);
@@ -184,8 +183,7 @@ TEST_F(TestServer, DISABLED_construction_and_destruction_server_init_error)
   }, rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestServer, DISABLED_construction_and_destruction_wait_set_error)
+TEST_F(TestServer, construction_and_destruction_wait_set_error)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_server_wait_set_get_num_entities, RCL_RET_ERROR);
@@ -1113,8 +1111,7 @@ TEST_F(TestCancelRequestServer, execute_goal_request_received_take_goal)
   EXPECT_NO_THROW(SendClientCancelRequest());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_is_ready_rcl_error) {
+TEST_F(TestGoalRequestServer, is_ready_rcl_error) {
   rcl_wait_set_t wait_set = rcl_get_zero_initialized_wait_set();
   rcutils_allocator_t allocator = rcutils_get_default_allocator();
   auto rcl_context = node_->get_node_base_interface()->get_context()->get_rcl_context().get();
@@ -1136,8 +1133,7 @@ TEST_F(TestGoalRequestServer, DISABLED_is_ready_rcl_error) {
   EXPECT_THROW(action_server_->is_ready(wait_set), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_take_goal_request_errors)
+TEST_F(TestGoalRequestServer, execute_goal_request_received_take_goal_request_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_take_goal_request, RCL_RET_ERROR);
@@ -1145,8 +1141,7 @@ TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_take_goal_r
   EXPECT_THROW(SendClientGoalRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_send_goal_response_errors)
+TEST_F(TestGoalRequestServer, execute_goal_request_received_send_goal_response_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_send_goal_response, RCL_RET_ERROR);
@@ -1154,8 +1149,7 @@ TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_send_goal_r
   EXPECT_THROW(SendClientGoalRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_accept_new_goal_errors)
+TEST_F(TestGoalRequestServer, execute_goal_request_received_accept_new_goal_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_accept_new_goal, nullptr);
@@ -1163,8 +1157,7 @@ TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_accept_new_
   EXPECT_THROW(SendClientGoalRequest(), std::runtime_error);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_update_goal_state_errors)
+TEST_F(TestGoalRequestServer, execute_goal_request_received_update_goal_state_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_update_goal_state, RCL_RET_ERROR);
@@ -1172,8 +1165,7 @@ TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_update_goal
   EXPECT_THROW(SendClientGoalRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_publish_status_server_get_goal_handles_errors)
+TEST_F(TestGoalRequestServer, publish_status_server_get_goal_handles_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_server_get_goal_handles, RCL_RET_ERROR);
@@ -1181,8 +1173,7 @@ TEST_F(TestGoalRequestServer, DISABLED_publish_status_server_get_goal_handles_er
   EXPECT_THROW(SendClientGoalRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_publish_status_get_goal_status_array_errors)
+TEST_F(TestGoalRequestServer, publish_status_get_goal_status_array_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_get_goal_status_array, RCL_RET_ERROR);
@@ -1190,8 +1181,7 @@ TEST_F(TestGoalRequestServer, DISABLED_publish_status_get_goal_status_array_erro
   EXPECT_THROW(SendClientGoalRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_publish_status_publish_status_errors)
+TEST_F(TestGoalRequestServer, publish_status_publish_status_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_publish_status, RCL_RET_ERROR);
@@ -1199,8 +1189,7 @@ TEST_F(TestGoalRequestServer, DISABLED_publish_status_publish_status_errors)
   EXPECT_THROW(SendClientGoalRequest(), std::runtime_error);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_take_failed)
+TEST_F(TestGoalRequestServer, execute_goal_request_received_take_failed)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_take_goal_request, RCL_RET_ACTION_SERVER_TAKE_FAILED);
@@ -1214,8 +1203,7 @@ TEST_F(TestGoalRequestServer, DISABLED_execute_goal_request_received_take_failed
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_get_result_rcl_errors)
+TEST_F(TestGoalRequestServer, get_result_rcl_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_take_result_request, RCL_RET_ERROR);
@@ -1223,8 +1211,7 @@ TEST_F(TestGoalRequestServer, DISABLED_get_result_rcl_errors)
   EXPECT_THROW(SendClientGoalRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestGoalRequestServer, DISABLED_send_result_rcl_errors)
+TEST_F(TestGoalRequestServer, send_result_rcl_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_send_result_response, RCL_RET_ERROR);
@@ -1232,8 +1219,7 @@ TEST_F(TestGoalRequestServer, DISABLED_send_result_rcl_errors)
   EXPECT_THROW(SendClientGoalRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestCancelRequestServer, DISABLED_execute_cancel_request_received_take_cancel_request_errors)
+TEST_F(TestCancelRequestServer, execute_cancel_request_received_take_cancel_request_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_take_cancel_request, RCL_RET_ERROR);
@@ -1241,8 +1227,7 @@ TEST_F(TestCancelRequestServer, DISABLED_execute_cancel_request_received_take_ca
   EXPECT_THROW(SendClientCancelRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestCancelRequestServer, DISABLED_execute_cancel_request_received_take_failed)
+TEST_F(TestCancelRequestServer, execute_cancel_request_received_take_failed)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_take_cancel_request, RCL_RET_ACTION_SERVER_TAKE_FAILED);
@@ -1256,8 +1241,7 @@ TEST_F(TestCancelRequestServer, DISABLED_execute_cancel_request_received_take_fa
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestCancelRequestServer, DISABLED_publish_status_rcl_errors)
+TEST_F(TestCancelRequestServer, publish_status_rcl_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_process_cancel_request, RCL_RET_ERROR);
@@ -1265,8 +1249,7 @@ TEST_F(TestCancelRequestServer, DISABLED_publish_status_rcl_errors)
   EXPECT_THROW(SendClientCancelRequest(), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestCancelRequestServer, DISABLED_publish_status_send_cancel_response_errors)
+TEST_F(TestCancelRequestServer, publish_status_send_cancel_response_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp_action", rcl_action_send_cancel_response, RCL_RET_ERROR);

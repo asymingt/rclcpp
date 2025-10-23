@@ -125,8 +125,7 @@ TEST_F(TestClient, construction_with_free_function) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestClient, DISABLED_construct_with_rcl_error) {
+TEST_F(TestClient, construct_with_rcl_error) {
   {
     // reset() is not necessary for this exception, but handles unused return value warning
     auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_client_init, RCL_RET_ERROR);

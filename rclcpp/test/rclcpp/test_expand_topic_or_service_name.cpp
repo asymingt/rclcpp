@@ -96,8 +96,7 @@ MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, !=)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, <)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, >)
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcutils_string_map_init_fail_bad_alloc) {
+TEST(TestExpandTopicOrServiceName, rcutils_string_map_init_fail_bad_alloc) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcutils_string_map_init, RCUTILS_RET_BAD_ALLOC);
   RCLCPP_EXPECT_THROW_EQ(
@@ -105,8 +104,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcutils_string_map_init_fail_bad_all
     std::bad_alloc());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcutils_string_map_init_fail_other) {
+TEST(TestExpandTopicOrServiceName, rcutils_string_map_init_fail_other) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcutils_string_map_init, RCUTILS_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -114,8 +112,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcutils_string_map_init_fail_other) 
     std::runtime_error("error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcl_get_default_topic_name_substitution_fail) {
+TEST(TestExpandTopicOrServiceName, rcl_get_default_topic_name_substitution_fail) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_get_default_topic_name_substitutions, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -123,8 +120,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcl_get_default_topic_name_substitut
     std::runtime_error("error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcl_get_default_topic_name_substitution_and_map_fini_fail) {
+TEST(TestExpandTopicOrServiceName, rcl_get_default_topic_name_substitution_and_map_fini_fail) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_get_default_topic_name_substitutions, RCL_RET_ERROR);
   auto mock2 = mocking_utils::patch_and_return(
@@ -134,8 +130,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcl_get_default_topic_name_substitut
     std::runtime_error("error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcutils_string_map_fini_fail_bad_alloc) {
+TEST(TestExpandTopicOrServiceName, rcutils_string_map_fini_fail_bad_alloc) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcutils_string_map_fini, RCUTILS_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -143,8 +138,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcutils_string_map_fini_fail_bad_all
     std::runtime_error("error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rmw_valid_full_topic_name_fail_invalid_argument) {
+TEST(TestExpandTopicOrServiceName, rmw_valid_full_topic_name_fail_invalid_argument) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rmw_validate_full_topic_name, RMW_RET_INVALID_ARGUMENT);
   RCLCPP_EXPECT_THROW_EQ(
@@ -153,8 +147,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rmw_valid_full_topic_name_fail_inval
       RCL_RET_INVALID_ARGUMENT, rcl_get_error_state(), "failed to validate full topic name"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcl_expand_topic_name_fail) {
+TEST(TestExpandTopicOrServiceName, rcl_expand_topic_name_fail) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_TOPIC_NAME_INVALID);
   RCLCPP_EXPECT_THROW_EQ(
@@ -162,8 +155,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcl_expand_topic_name_fail) {
     std::runtime_error("topic name unexpectedly valid"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcl_validate_topic_name_fail) {
+TEST(TestExpandTopicOrServiceName, rcl_validate_topic_name_fail) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_TOPIC_NAME_INVALID);
   auto mock2 = mocking_utils::patch_and_return(
@@ -174,8 +166,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcl_validate_topic_name_fail) {
       RCL_RET_ERROR, rcl_get_error_state(), "failed to validate full topic name"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_node_name_fail_invalid_argument) {
+TEST(TestExpandTopicOrServiceName, rmw_validate_node_name_fail_invalid_argument) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_NODE_INVALID_NAME);
   auto mock2 = mocking_utils::patch_and_return(
@@ -186,8 +177,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_node_name_fail_invalid_
       RCL_RET_INVALID_ARGUMENT, rcl_get_error_state(), "failed to validate node name"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_node_name_fail_other) {
+TEST(TestExpandTopicOrServiceName, rmw_validate_node_name_fail_other) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_NODE_INVALID_NAME);
   auto mock2 = mocking_utils::patch_and_return(
@@ -198,8 +188,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_node_name_fail_other) {
       RCL_RET_ERROR, rcl_get_error_state(), "failed to validate node name"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_namespace_fail_invalid_argument) {
+TEST(TestExpandTopicOrServiceName, rmw_validate_namespace_fail_invalid_argument) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_NODE_INVALID_NAMESPACE);
   auto mock2 = mocking_utils::patch_and_return(
@@ -210,8 +199,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_namespace_fail_invalid_
       RCL_RET_INVALID_ARGUMENT, rcl_get_error_state(), "failed to validate namespace"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_namespace_fail_other) {
+TEST(TestExpandTopicOrServiceName, rmw_validate_namespace_fail_other) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_NODE_INVALID_NAMESPACE);
   auto mock2 = mocking_utils::patch_and_return(
@@ -222,8 +210,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_namespace_fail_other) {
       RCL_RET_ERROR, rcl_get_error_state(), "failed to validate namespace"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcl_expand_topic_name_fail_other) {
+TEST(TestExpandTopicOrServiceName, rcl_expand_topic_name_fail_other) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -231,8 +218,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcl_expand_topic_name_fail_other) {
     rclcpp::exceptions::RCLError(RCL_RET_ERROR, rcl_get_error_state(), "error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcl_expand_topic_name_fail_invalid_node_name) {
+TEST(TestExpandTopicOrServiceName, rcl_expand_topic_name_fail_invalid_node_name) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_NODE_INVALID_NAME);
   RCLCPP_EXPECT_THROW_EQ(
@@ -240,8 +226,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcl_expand_topic_name_fail_invalid_n
     std::runtime_error("invalid rcl node name but valid rmw node name"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rcl_expand_topic_name_fail_invalid_node_namespace) {
+TEST(TestExpandTopicOrServiceName, rcl_expand_topic_name_fail_invalid_node_namespace) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_expand_topic_name, RCL_RET_NODE_INVALID_NAMESPACE);
   RCLCPP_EXPECT_THROW_EQ(
@@ -249,8 +234,7 @@ TEST(TestExpandTopicOrServiceName, DISABLED_rcl_expand_topic_name_fail_invalid_n
     std::runtime_error("invalid rcl namespace but valid rmw namespace"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestExpandTopicOrServiceName, DISABLED_rmw_validate_full_topic_name_fail_other) {
+TEST(TestExpandTopicOrServiceName, rmw_validate_full_topic_name_fail_other) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rmw_validate_full_topic_name, RMW_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(

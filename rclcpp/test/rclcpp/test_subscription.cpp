@@ -279,8 +279,7 @@ TEST_F(TestSubscription, take_serialized) {
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestSubscription, DISABLED_rcl_subscription_init_error) {
+TEST_F(TestSubscription, rcl_subscription_init_error) {
   initialize();
   auto callback = [](std::shared_ptr<const test_msgs::msg::Empty>) {};
   auto mock = mocking_utils::patch_and_return(
@@ -292,8 +291,7 @@ TEST_F(TestSubscription, DISABLED_rcl_subscription_init_error) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestSubscription, DISABLED_rcl_subscription_fini_error) {
+TEST_F(TestSubscription, rcl_subscription_fini_error) {
   initialize();
   auto callback = [](std::shared_ptr<const test_msgs::msg::Empty>) {};
   auto mock = mocking_utils::inject_on_return(
@@ -304,8 +302,7 @@ TEST_F(TestSubscription, DISABLED_rcl_subscription_fini_error) {
     node_->create_subscription<test_msgs::msg::Empty>("topic", 10, callback).reset());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestSubscription, DISABLED_rcl_subscription_get_actual_qos_error) {
+TEST_F(TestSubscription, rcl_subscription_get_actual_qos_error) {
   initialize();
   auto callback = [](std::shared_ptr<const test_msgs::msg::Empty>) {};
   auto mock = mocking_utils::patch_and_return(
@@ -316,8 +313,7 @@ TEST_F(TestSubscription, DISABLED_rcl_subscription_get_actual_qos_error) {
     sub->get_actual_qos(), std::runtime_error("failed to get qos settings: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestSubscription, DISABLED_rcl_take_type_erased_error) {
+TEST_F(TestSubscription, rcl_take_type_erased_error) {
   initialize();
   auto callback = [](std::shared_ptr<const test_msgs::msg::Empty>) {};
   auto mock = mocking_utils::patch_and_return(
@@ -330,8 +326,7 @@ TEST_F(TestSubscription, DISABLED_rcl_take_type_erased_error) {
   EXPECT_THROW(sub->take_type_erased(&msg, message_info), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestSubscription, DISABLED_rcl_take_serialized_message_error) {
+TEST_F(TestSubscription, rcl_take_serialized_message_error) {
   initialize();
   auto callback = [](std::shared_ptr<const test_msgs::msg::Empty>) {};
   auto mock = mocking_utils::patch_and_return(
@@ -344,8 +339,7 @@ TEST_F(TestSubscription, DISABLED_rcl_take_serialized_message_error) {
   EXPECT_THROW(sub->take_serialized(msg, message_info), rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestSubscription, DISABLED_rcl_subscription_get_publisher_count_error) {
+TEST_F(TestSubscription, rcl_subscription_get_publisher_count_error) {
   initialize();
   auto callback = [](std::shared_ptr<const test_msgs::msg::Empty>) {};
   auto mock = mocking_utils::patch_and_return(
@@ -505,8 +499,7 @@ TEST_F(TestSubscription, on_new_intra_process_message_callback) {
   EXPECT_THROW(sub->set_on_new_intra_process_message_callback(invalid_cb), std::invalid_argument);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestSubscription, DISABLED_get_network_flow_endpoints_errors) {
+TEST_F(TestSubscription, get_network_flow_endpoints_errors) {
   initialize();
   const rclcpp::QoS subscription_qos(1);
   auto subscription_callback = []([[maybe_unused]] test_msgs::msg::Empty::ConstSharedPtr msg) {

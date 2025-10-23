@@ -106,8 +106,7 @@ TEST_F(TestExecutor, add_remove_node_thread_safe) {
   future.get();
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_constructor_bad_guard_condition_init) {
+TEST_F(TestExecutor, constructor_bad_guard_condition_init) {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_guard_condition_init, RCL_RET_ERROR);
   EXPECT_THROW(
@@ -115,8 +114,7 @@ TEST_F(TestExecutor, DISABLED_constructor_bad_guard_condition_init) {
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_constructor_bad_wait_set_init) {
+TEST_F(TestExecutor, constructor_bad_wait_set_init) {
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_wait_set_init, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
     static_cast<void>(std::make_unique<DummyExecutor>()),
@@ -135,8 +133,7 @@ TEST_F(TestExecutor, add_callback_group_twice) {
     std::runtime_error("Callback group has already been added to this executor."));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_add_callback_group_failed_trigger_guard_condition) {
+TEST_F(TestExecutor, add_callback_group_failed_trigger_guard_condition) {
   DummyExecutor dummy;
   auto node = std::make_shared<rclcpp::Node>("node", "ns");
   rclcpp::CallbackGroup::SharedPtr cb_group = node->create_callback_group(
@@ -170,8 +167,7 @@ TEST_F(TestExecutor, remove_callback_group_null_node) {
   EXPECT_NO_THROW(dummy.remove_callback_group(cb_group, false));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_remove_callback_group_failed_trigger_guard_condition) {
+TEST_F(TestExecutor, remove_callback_group_failed_trigger_guard_condition) {
   DummyExecutor dummy;
   auto node = std::make_shared<rclcpp::Node>("node", "ns");
   rclcpp::CallbackGroup::SharedPtr cb_group = node->create_callback_group(
@@ -316,8 +312,7 @@ TEST_F(TestExecutor, spin_once_in_spin_once) {
   EXPECT_TRUE(spin_once_in_spin_once);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_cancel_failed_trigger_guard_condition) {
+TEST_F(TestExecutor, cancel_failed_trigger_guard_condition) {
   DummyExecutor dummy;
 
   auto mock = mocking_utils::patch_and_return(
@@ -327,16 +322,14 @@ TEST_F(TestExecutor, DISABLED_cancel_failed_trigger_guard_condition) {
     std::runtime_error("Failed to trigger guard condition in cancel: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_create_executor_fail_wait_set_clear) {
+TEST_F(TestExecutor, create_executor_fail_wait_set_clear) {
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_wait_set_clear, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
     DummyExecutor dummy,
     std::runtime_error("Couldn't clear the wait set: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_spin_all_fail_wait_set_clear) {
+TEST_F(TestExecutor, spin_all_fail_wait_set_clear) {
   DummyExecutor dummy;
   auto node = std::make_shared<rclcpp::Node>("node", "ns");
   auto timer =
@@ -359,8 +352,7 @@ TEST_F(TestExecutor, DISABLED_spin_all_fail_wait_set_clear) {
     std::runtime_error("Couldn't clear the wait set: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_spin_some_fail_wait_set_resize) {
+TEST_F(TestExecutor, spin_some_fail_wait_set_resize) {
   DummyExecutor dummy;
   auto node = std::make_shared<rclcpp::Node>("node", "ns");
   auto timer =
@@ -373,8 +365,7 @@ TEST_F(TestExecutor, DISABLED_spin_some_fail_wait_set_resize) {
     std::runtime_error("Couldn't resize the wait set: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_spin_some_fail_add_handles_to_wait_set) {
+TEST_F(TestExecutor, spin_some_fail_add_handles_to_wait_set) {
   DummyExecutor dummy;
   auto node = std::make_shared<rclcpp::Node>("node", "ns");
 
@@ -395,8 +386,7 @@ TEST_F(TestExecutor, DISABLED_spin_some_fail_add_handles_to_wait_set) {
     std::runtime_error("Couldn't fill wait set: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestExecutor, DISABLED_spin_some_fail_wait) {
+TEST_F(TestExecutor, spin_some_fail_wait) {
   DummyExecutor dummy;
   auto node = std::make_shared<rclcpp::Node>("node", "ns");
   auto timer =

@@ -176,8 +176,7 @@ MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcl_guard_condition_options_t, !=)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcl_guard_condition_options_t, >)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcl_guard_condition_options_t, <)
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestUtilities, DISABLED_test_context_init_shutdown_fails) {
+TEST(TestUtilities, test_context_init_shutdown_fails) {
   {
     auto context_fail_init = std::make_shared<rclcpp::contexts::DefaultContext>();
     auto mock = mocking_utils::patch_and_return(
@@ -235,8 +234,7 @@ MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, !=)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, <)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, >)
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestUtilities, DISABLED_remove_ros_arguments_rcl_parse_arguments_failed) {
+TEST(TestUtilities, remove_ros_arguments_rcl_parse_arguments_failed) {
   const char * const argv[] = {
     "process_name",
     "-d", "--ros-args",
@@ -254,8 +252,7 @@ TEST(TestUtilities, DISABLED_remove_ros_arguments_rcl_parse_arguments_failed) {
       RCL_RET_ERROR, rcl_get_error_state(), "failed to parse arguments"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestUtilities, DISABLED_remove_ros_arguments_rcl_remove_ros_arguments_failed) {
+TEST(TestUtilities, remove_ros_arguments_rcl_remove_ros_arguments_failed) {
   const char * const argv[] = {
     "process_name",
     "-d", "--ros-args",
@@ -273,8 +270,7 @@ TEST(TestUtilities, DISABLED_remove_ros_arguments_rcl_remove_ros_arguments_faile
       RCL_RET_ERROR, rcl_get_error_state(), ""));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestUtilities, DISABLED_remove_ros_arguments_rcl_remove_ros_arguments_failed_and_fini) {
+TEST(TestUtilities, remove_ros_arguments_rcl_remove_ros_arguments_failed_and_fini) {
   const char * const argv[] = {
     "process_name",
     "-d", "--ros-args",
@@ -295,8 +291,7 @@ TEST(TestUtilities, DISABLED_remove_ros_arguments_rcl_remove_ros_arguments_faile
       ", failed also to cleanup parsed arguments, leaking memory: "));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST(TestUtilities, DISABLED_remove_ros_arguments_rcl_arguments_fini_failed) {
+TEST(TestUtilities, remove_ros_arguments_rcl_arguments_fini_failed) {
   const char * const argv[] = {
     "process_name",
     "-d", "--ros-args",

@@ -148,8 +148,7 @@ TEST_F(TestNodeGraph, get_topic_names_and_types)
   ASSERT_LT(0u, get_num_topics());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_topic_names_and_types_rcl_error)
+TEST_F(TestNodeGraph, get_topic_names_and_types_rcl_error)
 {
   auto mock_get_topic_names = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_get_topic_names_and_types, RCL_RET_ERROR);
@@ -163,8 +162,7 @@ TEST_F(TestNodeGraph, DISABLED_get_topic_names_and_types_rcl_error)
       " types, leaking memory: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_topic_names_and_types_rcl_names_and_types_fini_error)
+TEST_F(TestNodeGraph, get_topic_names_and_types_rcl_names_and_types_fini_error)
 {
   auto mock_names_fini = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_names_and_types_fini, RCL_RET_ERROR);
@@ -179,8 +177,7 @@ TEST_F(TestNodeGraph, get_service_names_and_types)
   ASSERT_LT(0u, get_num_services());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_service_names_and_types_rcl_error)
+TEST_F(TestNodeGraph, get_service_names_and_types_rcl_error)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_get_service_names_and_types, RCL_RET_ERROR);
@@ -193,8 +190,7 @@ TEST_F(TestNodeGraph, DISABLED_get_service_names_and_types_rcl_error)
       " and types, leaking memory: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_service_names_and_types_rcl_names_and_types_fini)
+TEST_F(TestNodeGraph, get_service_names_and_types_rcl_names_and_types_fini)
 {
   auto mock_names_fini = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_names_and_types_fini, RCL_RET_ERROR);
@@ -275,8 +271,7 @@ TEST_F(TestNodeGraph, get_client_names_and_types_by_node)
   EXPECT_FALSE(services_of_node2.find("/ns/node1_service") != services_of_node2.end());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_service_names_and_types_by_node_rcl_errors)
+TEST_F(TestNodeGraph, get_service_names_and_types_by_node_rcl_errors)
 {
   auto callback = [](
     const test_msgs::srv::Empty::Request::SharedPtr,
@@ -295,8 +290,7 @@ TEST_F(TestNodeGraph, DISABLED_get_service_names_and_types_by_node_rcl_errors)
       " service names and types, leaking memory: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_client_names_and_types_by_node_rcl_errors)
+TEST_F(TestNodeGraph, get_client_names_and_types_by_node_rcl_errors)
 {
   auto client = node()->create_client<test_msgs::srv::Empty>("node1_service");
 
@@ -310,8 +304,7 @@ TEST_F(TestNodeGraph, DISABLED_get_client_names_and_types_by_node_rcl_errors)
       "failed to get service names and types by node: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_service_names_and_types_by_node_names_and_types_fini_error)
+TEST_F(TestNodeGraph, get_service_names_and_types_by_node_names_and_types_fini_error)
 {
   auto callback = [](
     const test_msgs::srv::Empty::Request::SharedPtr,
@@ -326,8 +319,7 @@ TEST_F(TestNodeGraph, DISABLED_get_service_names_and_types_by_node_names_and_typ
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_client_names_and_types_by_node_names_and_types_fini_error)
+TEST_F(TestNodeGraph, get_client_names_and_types_by_node_names_and_types_fini_error)
 {
   auto client = node()->create_client<test_msgs::srv::Empty>("node1_service");
   auto mock_names_fini = mocking_utils::patch_and_return(
@@ -410,8 +402,7 @@ TEST_F(TestNodeGraph, get_subscriber_names_and_types_by_node)
   EXPECT_FALSE(topics_of_node2.find("/ns/node1_topic") != topics_of_node2.end());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_publisher_names_and_types_by_node_rcl_errors)
+TEST_F(TestNodeGraph, get_publisher_names_and_types_by_node_rcl_errors)
 {
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node()->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);
@@ -427,8 +418,7 @@ TEST_F(TestNodeGraph, DISABLED_get_publisher_names_and_types_by_node_rcl_errors)
 }
 
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_subscriber_names_and_types_by_node_rcl_errors)
+TEST_F(TestNodeGraph, get_subscriber_names_and_types_by_node_rcl_errors)
 {
   const rclcpp::QoS subscriber_qos(10);
   auto callback = [](test_msgs::msg::Empty::ConstSharedPtr) {};
@@ -446,8 +436,7 @@ TEST_F(TestNodeGraph, DISABLED_get_subscriber_names_and_types_by_node_rcl_errors
       "failed to get topic names and types by node: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_publisher_names_and_types_by_node_names_and_types_fini_error)
+TEST_F(TestNodeGraph, get_publisher_names_and_types_by_node_names_and_types_fini_error)
 {
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node()->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);
@@ -459,8 +448,7 @@ TEST_F(TestNodeGraph, DISABLED_get_publisher_names_and_types_by_node_names_and_t
     node_graph()->get_publisher_names_and_types_by_node(node_name, absolute_namespace));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_subscriber_names_and_types_by_node_names_and_types_fini_error)
+TEST_F(TestNodeGraph, get_subscriber_names_and_types_by_node_names_and_types_fini_error)
 {
   const rclcpp::QoS subscriber_qos(10);
   auto callback = [](test_msgs::msg::Empty::ConstSharedPtr) {};
@@ -488,8 +476,7 @@ TEST_F(TestNodeGraph, get_node_names_with_enclaves)
   EXPECT_EQ(1u, names_namespaces_and_enclaves.size());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_node_names_and_namespaces_rcl_errors)
+TEST_F(TestNodeGraph, get_node_names_and_namespaces_rcl_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_get_node_names, RCL_RET_ERROR);
@@ -502,8 +489,7 @@ TEST_F(TestNodeGraph, DISABLED_get_node_names_and_namespaces_rcl_errors)
       " error not set, failed also to cleanup node namespaces, leaking memory: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_node_names_with_enclaves_rcl_errors)
+TEST_F(TestNodeGraph, get_node_names_with_enclaves_rcl_errors)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_get_node_names_with_enclaves, RCL_RET_ERROR);
@@ -517,8 +503,7 @@ TEST_F(TestNodeGraph, DISABLED_get_node_names_with_enclaves_rcl_errors)
       "error not set, failed also to cleanup node enclaves, leaking memory: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_node_names_and_namespaces_fini_errors)
+TEST_F(TestNodeGraph, get_node_names_and_namespaces_fini_errors)
 {
   auto mock_names_fini = mocking_utils::patch_and_return(
     "lib:rclcpp", rcutils_string_array_fini, RCL_RET_ERROR);
@@ -529,8 +514,7 @@ TEST_F(TestNodeGraph, DISABLED_get_node_names_and_namespaces_fini_errors)
     "could not destroy node namespaces: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_node_names_with_enclaves_fini_errors)
+TEST_F(TestNodeGraph, get_node_names_with_enclaves_fini_errors)
 {
   auto mock_names_fini = mocking_utils::patch_and_return(
     "lib:rclcpp", rcutils_string_array_fini, RCL_RET_ERROR);
@@ -542,8 +526,7 @@ TEST_F(TestNodeGraph, DISABLED_get_node_names_with_enclaves_fini_errors)
       ", could not destroy node enclaves, leaking memory: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_count_publishers_rcl_error)
+TEST_F(TestNodeGraph, count_publishers_rcl_error)
 {
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_count_publishers, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -551,8 +534,7 @@ TEST_F(TestNodeGraph, DISABLED_count_publishers_rcl_error)
     std::runtime_error("could not count publishers: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_count_subscribers_rcl_error)
+TEST_F(TestNodeGraph, count_subscribers_rcl_error)
 {
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_count_subscribers, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -560,8 +542,7 @@ TEST_F(TestNodeGraph, DISABLED_count_subscribers_rcl_error)
     std::runtime_error("could not count subscribers: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_count_clients_rcl_error)
+TEST_F(TestNodeGraph, count_clients_rcl_error)
 {
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_count_clients, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -569,8 +550,7 @@ TEST_F(TestNodeGraph, DISABLED_count_clients_rcl_error)
     std::runtime_error("could not count clients: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_count_services_rcl_error)
+TEST_F(TestNodeGraph, count_services_rcl_error)
 {
   auto mock = mocking_utils::patch_and_return("lib:rclcpp", rcl_count_services, RCL_RET_ERROR);
   RCLCPP_EXPECT_THROW_EQ(
@@ -597,8 +577,7 @@ TEST_F(TestNodeGraph, wait_for_graph_change)
     rclcpp::exceptions::EventNotRegisteredError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_notify_graph_change_rcl_error)
+TEST_F(TestNodeGraph, notify_graph_change_rcl_error)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_trigger_guard_condition, RCL_RET_ERROR);
@@ -667,8 +646,7 @@ TEST_F(TestNodeGraph, get_info_by_topic)
   EXPECT_FALSE(endpoint_gid_is_all_zeros);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_rcl_node_get_options_error)
+TEST_F(TestNodeGraph, get_info_by_topic_rcl_node_get_options_error)
 {
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node()->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);
@@ -685,8 +663,7 @@ MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, !=)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, <)
 MOCKING_UTILS_BOOL_OPERATOR_RETURNS_FALSE(rcutils_allocator_t, >)
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_rcl_remap_topic_name_error)
+TEST_F(TestNodeGraph, get_info_by_topic_rcl_remap_topic_name_error)
 {
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node()->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);
@@ -698,8 +675,7 @@ TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_rcl_remap_topic_name_error)
     std::runtime_error("Failed to remap topic name /ns/topic: error not set"));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_rcl_remap_topic_name_nullptr)
+TEST_F(TestNodeGraph, get_info_by_topic_rcl_remap_topic_name_nullptr)
 {
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node()->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);
@@ -719,8 +695,7 @@ TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_rcl_remap_topic_name_nullptr)
   EXPECT_NO_THROW(node_graph()->get_publishers_info_by_topic("topic", false));
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_rcl_errors)
+TEST_F(TestNodeGraph, get_info_by_topic_rcl_errors)
 {
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node()->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);
@@ -734,8 +709,7 @@ TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_rcl_errors)
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_unsupported)
+TEST_F(TestNodeGraph, get_info_by_topic_unsupported)
 {
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node()->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);
@@ -747,8 +721,7 @@ TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_unsupported)
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestNodeGraph, DISABLED_get_info_by_topic_endpoint_info_array_fini_error)
+TEST_F(TestNodeGraph, get_info_by_topic_endpoint_info_array_fini_error)
 {
   const rclcpp::QoS publisher_qos(1);
   auto publisher = node()->create_publisher<test_msgs::msg::Empty>("topic", publisher_qos);

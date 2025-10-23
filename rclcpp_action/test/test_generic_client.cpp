@@ -278,9 +278,7 @@ protected:
   typename rclcpp::Publisher<ActionStatusMessage>::SharedPtr status_publisher;
 };
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_construction_with_free_function) {
+TEST_F(TestGenericClient, construction_with_free_function) {
   {
     ASSERT_NO_THROW({
       auto client = rclcpp_action::create_generic_client(
@@ -331,9 +329,7 @@ TEST_F(TestGenericClient, DISABLED_construction_with_free_function) {
   }
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_construction_and_destruction_after_node)
+TEST_F(TestGenericClient, construction_and_destruction_after_node)
 {
   ASSERT_NO_THROW(
   {
@@ -349,9 +345,7 @@ TEST_F(TestGenericClient, DISABLED_construction_and_destruction_after_node)
   });
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_construction_and_destruction_callback_group)
+TEST_F(TestGenericClient, construction_and_destruction_callback_group)
 {
   auto group = client_node->create_callback_group(
     rclcpp::CallbackGroupType::MutuallyExclusive);
@@ -368,9 +362,7 @@ TEST_F(TestGenericClient, DISABLED_construction_and_destruction_callback_group)
       options).reset());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_wait_for_action_server)
+TEST_F(TestGenericClient, wait_for_action_server)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -387,9 +379,7 @@ TEST_F(TestGenericClient, DISABLED_wait_for_action_server)
     rclcpp::exceptions::InvalidNodeError);
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_wait_for_action_server_rcl_errors)
+TEST_F(TestGenericClient, wait_for_action_server_rcl_errors)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -414,9 +404,7 @@ TEST_F(TestGenericClient, DISABLED_wait_for_action_server_rcl_errors)
   TearDownServer();
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClient, DISABLED_is_ready) {
+TEST_F(TestGenericClient, is_ready) {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
     action_name,
@@ -454,9 +442,7 @@ protected:
   }
 };
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_no_callbacks)
+TEST_F(TestGenericClientAgainstServer, async_send_goal_no_callbacks)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -482,9 +468,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_no_callbacks)
   EXPECT_FALSE(goal_handle->is_result_aware());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_request_no_callbacks)
+TEST_F(TestGenericClientAgainstServer, async_send_goal_request_no_callbacks)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -510,9 +494,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_request_no_callb
   EXPECT_FALSE(goal_handle->is_result_aware());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_bad_goal_handles)
+TEST_F(TestGenericClientAgainstServer, bad_goal_handles)
 {
   auto action_generic_client0 = rclcpp_action::create_generic_client(
     client_node,
@@ -535,9 +517,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_bad_goal_handles)
   EXPECT_THROW(action_generic_client1->async_cancel_goal(goal_handle), UnknownGoalHandleError);
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_no_callbacks_wait_for_result)
+TEST_F(TestGenericClientAgainstServer, async_send_goal_no_callbacks_wait_for_result)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -565,9 +545,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_no_callbacks_wai
   EXPECT_EQ(5, result->sequence[5]);
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_no_callbacks_then_invalidate)
+TEST_F(TestGenericClientAgainstServer, async_send_goal_no_callbacks_then_invalidate)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -592,9 +570,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_no_callbacks_the
   EXPECT_THROW(future_result.get(), UnawareGoalHandleError);
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_with_goal_response_callback_wait_for_result)
+TEST_F(TestGenericClientAgainstServer, async_send_goal_with_goal_response_callback_wait_for_result)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -645,9 +621,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_with_goal_respon
   }
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_with_feedback_callback_wait_for_result)
+TEST_F(TestGenericClientAgainstServer, async_send_goal_with_feedback_callback_wait_for_result)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -684,9 +658,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_with_feedback_ca
   EXPECT_EQ(5, feedback_count);
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_with_result_callback_wait_for_result)
+TEST_F(TestGenericClientAgainstServer, async_send_goal_with_result_callback_wait_for_result)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -725,9 +697,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_send_goal_with_result_call
   EXPECT_EQ(3, result->sequence.back());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_get_result_with_callback)
+TEST_F(TestGenericClientAgainstServer, async_get_result_with_callback)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -765,9 +735,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_get_result_with_callback)
   EXPECT_EQ(3, result->sequence.back());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_one_goal)
+TEST_F(TestGenericClientAgainstServer, async_cancel_one_goal)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -788,9 +756,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_one_goal)
   EXPECT_EQ(ActionCancelGoalResponse::ERROR_NONE, cancel_response->return_code);
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_one_goal_with_callback)
+TEST_F(TestGenericClientAgainstServer, async_cancel_one_goal_with_callback)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -827,9 +793,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_one_goal_with_callb
   EXPECT_TRUE(cancel_response_received);
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_all_goals)
+TEST_F(TestGenericClientAgainstServer, async_cancel_all_goals)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -868,9 +832,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_all_goals)
   EXPECT_EQ(rclcpp_action::GoalStatus::STATUS_CANCELED, goal_handle1->get_status());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_all_goals_with_callback)
+TEST_F(TestGenericClientAgainstServer, async_cancel_all_goals_with_callback)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -923,9 +885,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_all_goals_with_call
   EXPECT_EQ(rclcpp_action::GoalStatus::STATUS_CANCELED, goal_handle1->get_status());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_some_goals)
+TEST_F(TestGenericClientAgainstServer, async_cancel_some_goals)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -959,9 +919,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_some_goals)
   EXPECT_EQ(rclcpp_action::GoalStatus::STATUS_CANCELED, goal_handle0->get_status());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_some_goals_with_callback)
+TEST_F(TestGenericClientAgainstServer, async_cancel_some_goals_with_callback)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -1007,9 +965,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_async_cancel_some_goals_with_cal
   EXPECT_EQ(rclcpp_action::GoalStatus::STATUS_CANCELED, goal_handle0->get_status());
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_deadlock_in_callbacks)
+TEST_F(TestGenericClientAgainstServer, deadlock_in_callbacks)
 {
   std::atomic<bool> feedback_callback_called = false;
   std::atomic<bool> response_callback_called = false;
@@ -1091,9 +1047,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_deadlock_in_callbacks)
   EXPECT_TRUE(feedback_callback_called);
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_send_rcl_errors)
+TEST_F(TestGenericClientAgainstServer, send_rcl_errors)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,
@@ -1139,9 +1093,7 @@ TEST_F(TestGenericClientAgainstServer, DISABLED_send_rcl_errors)
   }
 }
 
-// TODO(asymingt) fix generic clients (dynamic type loading) and mocking.
-// See: https://github.com/intrinsic-opensource/ros-central-registry/issues/66
-TEST_F(TestGenericClientAgainstServer, DISABLED_execute_rcl_errors)
+TEST_F(TestGenericClientAgainstServer, execute_rcl_errors)
 {
   auto action_generic_client = rclcpp_action::create_generic_client(
     client_node,

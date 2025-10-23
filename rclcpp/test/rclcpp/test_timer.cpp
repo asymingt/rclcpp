@@ -299,8 +299,7 @@ TEST_P(TestTimer, callback_with_period_zero) {
 }
 
 /// Test internal failures using mocks
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_P(TestTimer, DISABLED_test_failures_with_exceptions)
+TEST_P(TestTimer, test_failures_with_exceptions)
 {
   // expect clean state, don't run otherwise
   test_initial_conditions(timer, has_timer_run);

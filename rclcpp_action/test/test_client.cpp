@@ -329,8 +329,7 @@ TEST_F(TestClient, construction_and_destruction_callback_group)
     ).reset());
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestClient, DISABLED_construction_and_destruction_rcl_errors)
+TEST_F(TestClient, construction_and_destruction_rcl_errors)
 {
   {
     auto mock = mocking_utils::patch_and_return(
@@ -368,8 +367,7 @@ TEST_F(TestClient, wait_for_action_server)
   EXPECT_THROW(action_client->wait_for_action_server(0ms), rclcpp::exceptions::InvalidNodeError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestClient, DISABLED_wait_for_action_server_rcl_errors)
+TEST_F(TestClient, wait_for_action_server_rcl_errors)
 {
   auto action_client = rclcpp_action::create_client<ActionType>(client_node, action_name);
   SetUpServer();
@@ -391,8 +389,7 @@ TEST_F(TestClient, DISABLED_wait_for_action_server_rcl_errors)
   TearDownServer();
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestClient, DISABLED_is_ready) {
+TEST_F(TestClient, is_ready) {
   auto action_client = rclcpp_action::create_client<ActionType>(client_node, action_name);
   rcl_wait_set_t wait_set = rcl_get_zero_initialized_wait_set();
   rcutils_allocator_t allocator = rcutils_get_default_allocator();
@@ -931,8 +928,7 @@ TEST_F(TestClientAgainstServer, deadlock_in_callbacks)
   EXPECT_TRUE(feedback_callback_called);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestClientAgainstServer, DISABLED_send_rcl_errors)
+TEST_F(TestClientAgainstServer, send_rcl_errors)
 {
   auto action_client = rclcpp_action::create_client<ActionType>(client_node, action_name);
   ASSERT_TRUE(action_client->wait_for_action_server(WAIT_FOR_SERVER_TIMEOUT));
@@ -973,8 +969,7 @@ TEST_F(TestClientAgainstServer, DISABLED_send_rcl_errors)
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestClientAgainstServer, DISABLED_execute_rcl_errors)
+TEST_F(TestClientAgainstServer, execute_rcl_errors)
 {
   auto action_client = rclcpp_action::create_client<ActionType>(client_node, action_name);
   ASSERT_TRUE(action_client->wait_for_action_server(WAIT_FOR_SERVER_TIMEOUT));

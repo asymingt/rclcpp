@@ -106,8 +106,7 @@ bool operator==(const test_msgs::msg::BasicTypes & m1, const test_msgs::msg::Bas
          m1.uint64_value == m2.uint64_value;
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestContentFilterSubscription, DISABLED_is_cft_enabled)
+TEST_F(TestContentFilterSubscription, is_cft_enabled)
 {
   {
     auto mock = mocking_utils::patch_and_return(
@@ -122,8 +121,7 @@ TEST_F(TestContentFilterSubscription, DISABLED_is_cft_enabled)
   }
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestContentFilterSubscription, DISABLED_get_content_filter_error)
+TEST_F(TestContentFilterSubscription, get_content_filter_error)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_subscription_get_content_filter, RCL_RET_ERROR);
@@ -134,8 +132,7 @@ TEST_F(TestContentFilterSubscription, DISABLED_get_content_filter_error)
     rclcpp::exceptions::RCLError);
 }
 
-// TODO(asymingt) enable once mocking works in Bazel.
-TEST_F(TestContentFilterSubscription, DISABLED_set_content_filter_error)
+TEST_F(TestContentFilterSubscription, set_content_filter_error)
 {
   auto mock = mocking_utils::patch_and_return(
     "lib:rclcpp", rcl_subscription_set_content_filter, RCL_RET_ERROR);
