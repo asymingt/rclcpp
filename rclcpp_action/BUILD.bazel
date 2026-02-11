@@ -107,7 +107,6 @@ cc_ros_library(
         ],
         local_defines = ["ROS_PACKAGE_NAME=\\\"rclcpp_action\\\""],
         timeout = "moderate",
-        tags = ["exclusive"],
     )
     for name in [
         "benchmark_action_client",

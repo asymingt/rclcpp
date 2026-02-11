@@ -325,7 +325,6 @@ cc_test(
             ":test_msgs_cc",
         ],
         timeout = "moderate",
-        tags = ["exclusive"] if name in ["test_executors_busy_waiting"] else [],
     )
     for name, srcs in {
         # test/rclcpp
@@ -491,7 +490,6 @@ cc_library(
             ":rclcpp_mock",
         ],
         timeout = "moderate",
-        tags = ["exclusive"],
     )
     for name in [
        "benchmark_executor",

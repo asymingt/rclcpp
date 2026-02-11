@@ -113,7 +113,6 @@ cc_ros_library(
         ],
         local_defines = ["ROS_PACKAGE_NAME=\\\"rclcpp_lifecycle\\\""],
         timeout = "moderate",
-        tags = ["exclusive"],
     )
     for name in [
         "benchmark_lifecycle_client",
