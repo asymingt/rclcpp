@@ -491,6 +491,7 @@ cc_library(
             ":rclcpp_mock",
         ],
         timeout = "moderate",
+        tags = ["exclusive"],
     )
     for name in [
        "benchmark_executor",
