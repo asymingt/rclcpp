@@ -101,6 +101,7 @@ cc_ros_library(
         timeout = "moderate",
         srcs = ["test/benchmark/{}.cpp".format(name)],
         local_defines = ["ROS_PACKAGE_NAME=\\\"rclcpp_action\\\""],
+        tags = ["manual"],
         deps = [
             ":rclcpp_action_mock",
             ":test_msgs",

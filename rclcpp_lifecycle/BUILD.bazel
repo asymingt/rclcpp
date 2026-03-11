@@ -13,7 +13,7 @@
 # limitations under the License.
 
 load("@rosidl_generator_cpp//:rules.bzl", "cc_ros_library")
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -116,6 +116,7 @@ cc_ros_library(
         timeout = "moderate",
         srcs = ["test/benchmark/{}.cpp".format(name)],
         local_defines = ["ROS_PACKAGE_NAME=\\\"rclcpp_lifecycle\\\""],
+        tags = ["manual"],
         deps = [
             ":rclcpp_lifecycle_mock",
             ":test_msgs",
